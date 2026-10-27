@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Pedidos lançados ({{ pedidos|length }})</h2>
+<table>
+  <tr><th>Nº</th><th>Cliente</th><th>Produto</th><th>Qtd.</th><th>Entrega</th><th>Lançado em</th></tr>
+  {% for p in pedidos %}
+  <tr>
+    <td>{{ p.numero }}</td>
+    <td>{{ p.cliente }} - {{ clientes.get(p.cliente, '') }}</td>
+    <td>{{ produtos[p.produto][0] }}</td>
+    <td>{{ p.quantidade }}</td>
+    <td>{{ p.entrega | data_br }}</td>
+    <td>{{ p.criado_em | data_br }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

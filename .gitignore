@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+saida/
+entrada/backup/
+sistema/pedidos.db
+entrada/

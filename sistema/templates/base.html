@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>VendaFácil</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; background: #eef2f7; color: #222; }
+  header { background: #1f4e78; color: #fff; padding: 12px 24px; display: flex;
+           justify-content: space-between; align-items: center; }
+  header a { color: #fff; margin-left: 16px; text-decoration: none; }
+  main { max-width: 900px; margin: 24px auto; background: #fff; padding: 24px;
+         border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+  label { display: block; margin-top: 12px; font-weight: bold; }
+  input, select, textarea { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; }
+  button { margin-top: 18px; padding: 10px 24px; background: #1f4e78; color: #fff;
+           border: 0; border-radius: 4px; cursor: pointer; font-size: 15px; }
+  .erro { background: #fde2e2; color: #9b1c1c; padding: 10px; border-radius: 4px; }
+  .sucesso { background: #def7e5; color: #1d6b35; padding: 10px; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { background: #1f4e78; color: #fff; text-align: left; padding: 8px; }
+  td { padding: 8px; border-bottom: 1px solid #ddd; }
+</style>
+</head>
+<body>
+<header>
+  <strong>VendaFácil · Sistema de Pedidos</strong>
+  {% if session.usuario %}
+  <nav><a href="/pedidos">Pedidos</a><a href="/pedidos/novo">Novo pedido</a><a href="/sair">Sair</a></nav>
+  {% endif %}
+</header>
+<main>{% block conteudo %}{% endblock %}</main>
+</body>
+</html>

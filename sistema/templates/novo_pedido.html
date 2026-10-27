@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<h2>Novo pedido</h2>
+{% if erro %}<p class="erro" id="mensagem-erro">{{ erro }}</p>{% endif %}
+{% if sucesso %}<p class="sucesso" id="mensagem-sucesso">{{ sucesso }}</p>{% endif %}
+<form method="post">
+  <label for="cliente">Código do cliente</label>
+  <input id="cliente" name="cliente" value="{{ dados.get('cliente', '') }}">
+  <label for="produto">Produto</label>
+  <select id="produto" name="produto">
+    <option value="">Selecione...</option>
+    {% for codigo, (descricao, estoque) in produtos.items() %}
+    <option value="{{ codigo }}" {% if dados.get('produto') == codigo %}selected{% endif %}>{{ codigo }} - {{ descricao }}</option>
+    {% endfor %}
+  </select>
+  <label for="quantidade">Quantidade</label>
+  <input id="quantidade" name="quantidade" type="number" value="{{ dados.get('quantidade', '') }}">
+  <label for="entrega">Data de entrega</label>
+  <input id="entrega" name="entrega" type="date" value="{{ dados.get('entrega', '') }}">
+  <label for="observacao">Observação</label>
+  <textarea id="observacao" name="observacao" rows="2">{{ dados.get('observacao', '') }}</textarea>
+  <button type="submit" id="salvar">Salvar pedido</button>
+</form>
+{% endblock %}
